@@ -1,0 +1,14 @@
+---
+version: '3'
+services:
+  prometheus-openstack-exporter:
+    restart: unless-stopped
+    container_name: prometheus-openstack-exporter
+    image: "quay.io/niedbalski/openstack-exporter-linux-amd64:master"
+    command: --disable-metric=neutron-port --disable-metric=neutron-network_ip_availabilities_total --endpoint-type=internal service
+    volumes:
+      - "/etc/hosts:/etc/hosts:ro"
+      - "/opt/configuration/environments/openstack/clouds.yml:/etc/openstack/clouds.yaml:ro"
+      - "/opt/configuration/environments/openstack/secure.yml:/etc/openstack/secure.yaml:ro"
+    ports:
+      - 9180:9180

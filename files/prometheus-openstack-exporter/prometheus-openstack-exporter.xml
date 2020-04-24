@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>4.4</version>
+    <date>2020-04-26T18:43:23Z</date>
+    <groups>
+        <group>
+            <name>Templates/Applications</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Betacloud - OpenStack Exporter</template>
+            <name>Betacloud - OpenStack Exporter</name>
+            <groups>
+                <group>
+                    <name>Templates/Applications</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>OpenStack</name>
+                </application>
+                <application>
+                    <name>OpenStack Cinder</name>
+                </application>
+                <application>
+                    <name>OpenStack Glance</name>
+                </application>
+                <application>
+                    <name>OpenStack Keystone</name>
+                </application>
+                <application>
+                    <name>OpenStack Neutron</name>
+                </application>
+                <application>
+                    <name>OpenStack Nova</name>
+                </application>
+            </applications>
+            <items>
+                <item>
+                    <name>OpenStack Cinder: number of snapshots</name>
+                    <type>DEPENDENT</type>
+                    <key>openstack.cinder_snapshots</key>
+                    <delay>0</delay>
+                    <applications>
+                        <application>
+                            <name>OpenStack Cinder</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>PROMETHEUS_PATTERN</type>
+                            <params>openstack_cinder_snapshots
+</params>
+                        </step>
+                    </preprocessing>
+                    <master_item>
+                        <key>openstack_exporter.get</key>
+                    </master_item>
+                </item>
+                <item>
+                    <name>OpenStack Cinder: service status</name>
+                    <type>DEPENDENT</type>
+                    <key>openstack.cinder_up</key>
+                    <delay>0</delay>
+                    <applications>
+                        <application>
+                            <name>OpenStack Cinder</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>PROMETHEUS_PATTERN</type>
+                            <params>openstack_cinder_up
+</params>
+                        </step>
+                    </preprocessing>
+                    <master_item>
+                        <key>openstack_exporter.get</key>
+                    </master_item>
+                </item>
+                <item>
+                    <name>OpenStack Cinder: number of volumes</name>
+                    <type>DEPENDENT</type>
+                    <key>openstack.cinder_volumes</key>
+                    <delay>0</delay>
+                    <applications>
+                        <application>
+                            <name>OpenStack Cinder</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>PROMETHEUS_PATTERN</type>
+                            <params>openstack_cinder_volumes
+</params>
+                        </step>
+                    </preprocessing>
+                    <master_item>
+                        <key>openstack_exporter.get</key>
+                    </master_item>
+                </item>
+                <item>
+                    <name>OpenStack Glance: number of images</name>
+                    <type>DEPENDENT</type>
+                    <key>openstack.glance_images</key>
+                    <delay>0</delay>
+                    <applications>
+                        <application>
+                            <name>OpenStack Glance</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>PROMETHEUS_PATTERN</type>
+                            <params>openstack_glance_images
+</params>
+                        </step>
+                    </preprocessing>
+                    <master_item>
+                        <key>openstack_exporter.get</key>
+                    </master_item>
+                </item>
+                <item>
+                    <name>OpenStack Glance: service status</name>
+                    <type>DEPENDENT</type>
+                    <key>openstack.glance_up</key>
+                    <delay>0</delay>
+                    <applications>
+                        <application>
+                            <name>OpenStack Glance</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>PROMETHEUS_PATTERN</type>
+                            <params>openstack_glance_up
+</params>
+                        </step>
+                    </preprocessing>
+                    <master_item>
+                        <key>openstack_exporter.get</key>
+                    </master_item>
+                </item>
+                <item>
+                    <name>OpenStack Keystone: service status</name>
+                    <type>DEPENDENT</type>
+                    <key>openstack.identity_up</key>
+                    <delay>0</delay>
+                    <applications>
+                        <application>
+                            <name>OpenStack Keystone</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>PROMETHEUS_PATTERN</type>
+                            <params>openstack_identity_up
+</params>
+                        </step>
+                    </preprocessing>
+                    <master_item>
+                        <key>openstack_exporter.get</key>
+                    </master_item>
+                </item>
+                <item>
+                    <name>OpenStack Neutron: number of floating ips</name>
+                    <type>DEPENDENT</type>
+                    <key>openstack.neutron_floating_ips</key>
+                    <delay>0</delay>
+                    <applications>
+                        <application>
+                            <name>OpenStack Neutron</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>PROMETHEUS_PATTERN</type>
+                            <params>openstack_neutron_floating_ips
+</params>
+                        </step>
+                    </preprocessing>
+                    <master_item>
+                        <key>openstack_exporter.get</key>
+                    </master_item>
+                </item>
+                <item>
+                    <name>OpenStack Neutron: number of networks</name>
+                    <type>DEPENDENT</type>
+                    <key>openstack.neutron_networks</key>
+                    <delay>0</delay>
+                    <applications>
+                        <application>
+                            <name>OpenStack Neutron</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>PROMETHEUS_PATTERN</type>
+                            <params>openstack_neutron_networks
+</params>
+                        </step>
+                    </preprocessing>
+                    <master_item>
+                        <key>openstack_exporter.get</key>
+                    </master_item>
+                </item>
+                <item>
+                    <name>OpenStack Neutron: number of routers</name>
+                    <type>DEPENDENT</type>
+                    <key>openstack.neutron_routers</key>
+                    <delay>0</delay>
+                    <applications>
+                        <application>
+                            <name>OpenStack Neutron</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>PROMETHEUS_PATTERN</type>
+                            <params>openstack_neutron_routers
+</params>
+                        </step>
+                    </preprocessing>
+                    <master_item>
+                        <key>openstack_exporter.get</key>
+                    </master_item>
+                </item>
+                <item>
+                    <name>OpenStack Neutron: number of security groups</name>
+                    <type>DEPENDENT</type>
+                    <key>openstack.neutron_security_groups</key>
+                    <delay>0</delay>
+                    <applications>
+                        <application>
+                            <name>OpenStack Neutron</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>PROMETHEUS_PATTERN</type>
+                            <params>openstack_neutron_security_groups
+</params>
+                        </step>
+                    </preprocessing>
+                    <master_item>
+                        <key>openstack_exporter.get</key>
+                    </master_item>
+                </item>
+                <item>
+                    <name>OpenStack Neutron: number of subnets</name>
+                    <type>DEPENDENT</type>
+                    <key>openstack.neutron_subnets</key>
+                    <delay>0</delay>
+                    <applications>
+                        <application>
+                            <name>OpenStack Neutron</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>PROMETHEUS_PATTERN</type>
+                            <params>openstack_neutron_subnets
+</params>
+                        </step>
+                    </preprocessing>
+                    <master_item>
+                        <key>openstack_exporter.get</key>
+                    </master_item>
+                </item>
+                <item>
+                    <name>OpenStack Neutron: service status</name>
+                    <type>DEPENDENT</type>
+                    <key>openstack.neutron_up</key>
+                    <delay>0</delay>
+                    <applications>
+                        <application>
+                            <name>OpenStack Neutron</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>PROMETHEUS_PATTERN</type>
+                            <params>openstack_neutron_up
+</params>
+                        </step>
+                    </preprocessing>
+                    <master_item>
+                        <key>openstack_exporter.get</key>
+                    </master_item>
+                </item>
+                <item>
+                    <name>OpenStack Nova: number of instances</name>
+                    <type>DEPENDENT</type>
+                    <key>openstack.nova_total_vms</key>
+                    <delay>0</delay>
+                    <applications>
+                        <application>
+                            <name>OpenStack Nova</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>PROMETHEUS_PATTERN</type>
+                            <params>openstack_nova_total_vms
+</params>
+                        </step>
+                    </preprocessing>
+                    <master_item>
+                        <key>openstack_exporter.get</key>
+                    </master_item>
+                </item>
+                <item>
+                    <name>OpenStack Nova: service status</name>
+                    <type>DEPENDENT</type>
+                    <key>openstack.nova_up</key>
+                    <delay>0</delay>
+                    <applications>
+                        <application>
+                            <name>OpenStack Nova</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>PROMETHEUS_PATTERN</type>
+                            <params>openstack_nova_up
+</params>
+                        </step>
+                    </preprocessing>
+                    <master_item>
+                        <key>openstack_exporter.get</key>
+                    </master_item>
+                </item>
+                <item>
+                    <name>Get openstack_exporter metrics</name>
+                    <type>HTTP_AGENT</type>
+                    <key>openstack_exporter.get</key>
+                    <history>1h</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <applications>
+                        <application>
+                            <name>OpenStack</name>
+                        </application>
+                    </applications>
+                    <timeout>60s</timeout>
+                    <url>http://{$OPENSTACK_EXPORTER_ADDRESS}:{$OPENSTACK_EXPORTER_PORT}/metrics</url>
+                </item>
+            </items>
+        </template>
+    </templates>
+</zabbix_export>

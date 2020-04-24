@@ -1,0 +1,41 @@
+---
+- name: Manage zabbix-agent service
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Install required packages
+      package:
+        name: zabbix-agent
+        state: present
+      become: true
+
+    - name: Copy zabbix_agentd.conf configuration file
+      template:
+        src: zabbix_agentd.conf.j2
+        dest: /etc/zabbix/zabbix_agentd.conf
+        owner: root
+        group: root
+        mode: 0644
+      become: true
+      notify: Restart zabbix-agent service
+
+    - name: Manage extensions
+      include_tasks: tasks/agent-extension.yml
+      loop: "{{ zabbix_agent_extensions }}"
+      loop_control:
+        loop_var: zabbix_extension
+
+    - name: Start zabbix-agent service
+      service:
+        name: zabbix-agent
+        state: started
+        enabled: true
+      become: true
+
+  handlers:
+    - name: Restart zabbix-agent service
+      service:
+        name: zabbix-agent
+        state: restarted
+      become: true

@@ -1,0 +1,14 @@
+---
+zabbix_agent_extensions:
+  - name: zabbix-agent-extension-mysql
+    group: mariadb
+    binary_files:
+      - zabbix-agent-extension-mysql
+    configuration_files:
+      - zabbix-agent-extension-mysql.conf
+    macros:
+      - MYSQL_DSN
+      - MYSQL_PASS
+      - MYSQL_USER
+      - ZABBIX_SERVER_IP
+      - ZABBIX_SERVER_PORT
